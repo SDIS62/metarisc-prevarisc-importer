@@ -1,0 +1,35 @@
+{% extends 'index.html.twig' %}
+
+{% block content %}
+<div class="container">
+  <h1>Etablissements :</h1>
+  <p>{{ etablissements.id }}</p>
+
+  {% if etablissements is empty %}
+    <h1>Il n'y a pas d'établissements dans la base de données...</h1>
+  {% endif %}
+
+
+  {% for eta in etablissements %}
+    <div class="card mb-3">
+      <div class="card-header ">
+        <h2 class="card-title">Etablissement : {{ loop.index }}</h2>
+        <form  method="GET" name="id" action="../src/controllers/Etablissement/update_etablissement.php" >
+          <input id="update" name="prodId" type="hidden" value="{{ eta.id }}">
+          <button type="submit" class="btn btn-secondary ">Modifier</button>
+        </form>      </div>
+      <div class="card-body">
+        <h3 class="card-subtitle mb-2">ID: {{ eta.id }}</h3>
+        <h4 class="card-text">Id prevarisc: {{ eta.idPrevarisc }}</h4>
+        {% if eta.estImporte == true %}
+          <p class="card-text text-success"><b>Est importé</b></p>
+        {% else %}
+            <p class="card-text text-warning"><b>N'est pas importé</b></p>
+        {% endif %}
+        <p class="card-text">Date de création: {{ eta.date_creation|date("d/m/Y") }}</p>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+{% endblock %}

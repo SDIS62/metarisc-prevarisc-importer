@@ -1,0 +1,27 @@
+{% extends 'index.html.twig' %}
+
+{% block content %}
+<div class="container">
+  <h1>Utilisateurs :</h1>
+  <p>{{ users.id }}</p>
+
+  {% if users is empty %}
+    <h1>Il n'y a pas d'utilisateurs dans la base de données...</h1>
+  {% endif %}
+
+  {% for user in users %}
+    <div class="card mb-3">
+      <div class="card-header">
+        <h2 class="card-title">Utilisateur : {{ loop.index }}</h2>
+      </div>
+      <div class="card-body">
+        <h3 class="card-subtitle mb-2">ID: {{ user.id }}</h3>
+        <h4 class="card-text">Id Metarisc: {{ user.idMetarisc }}</h4>
+        <p class="card-text">Nom: {{ user.username }}</p>
+        <p class="card-text">Date de création: {{ user.date_creation|date("d/m/Y") }}</p>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+{% endblock %}

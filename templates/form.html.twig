@@ -1,0 +1,11 @@
+{% extends 'index.html.twig' %}
+{% block content%}
+
+<form method="POST" action="{{ lien }}">
+
+    {% block specific_fields %}{% endblock %}
+
+</form>
+
+
+{% endblock %}

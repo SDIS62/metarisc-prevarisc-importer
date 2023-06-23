@@ -1,0 +1,34 @@
+{% extends 'index.html.twig' %}
+
+{% block content %}
+<div class="container">
+  <h1>Dossiers :</h1>
+  <p>{{ dossiers.id }}</p>
+
+  {% if dossiers is empty %}
+    <h1>Il n'y a pas de dossiers dans la base de données...</h1>
+  {% endif %}
+
+  {% for dossier in dossiers %}
+    <div class="card mb-3">
+      <div class="card-header ">
+        <h2 class="card-title">Dossier : {{ loop.index }}</h2>
+        <form  method="GET" name="id" value="{{ dossier.id }}" action="../src/controllers/Dossiers/update_dossier.php" >
+          <button type="submit" class="btn btn-secondary ">Modifier</button>
+        </form>
+      </div>
+      <div class="card-body">
+        <h3 class="card-subtitle mb-2">ID: {{ dossier.id }}</h3>
+        <h4 class="card-text">Id prevarisc: {{ dossier.idPrevarisc }}</h4>
+        {% if eta.estImporte == true %}
+          <p class="card-text text-success"><b>Est importé</b></p>
+        {% else %}
+            <p class="card-text text-warning"><b>N'est pas importé</b></p>
+        {% endif %}
+        <p class="card-text">Date de création: {{ dossier.date_creation|date("d/m/Y") }}</p>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+{% endblock %}

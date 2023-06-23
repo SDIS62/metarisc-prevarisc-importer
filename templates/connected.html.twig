@@ -1,0 +1,24 @@
+{% extends 'index.html.twig' %}
+
+{% block content %}
+<div class="container">
+
+<h1>Connexion</h1>
+<p>Lien du bouton : <em>{{link}}</em></p>
+  <a href={{link}} class="btn btn-link"><button type="submit" class="btn mb-4" >Se connecter et voir mon profil et les notifications</a></button>
+
+<form  method="GET" action="../src/controllers/Etablissement/index_etablissement.php" >
+  <button type="submit" class="btn btn-primary  mb-4">Voir tous les établissement</button>
+</form>
+
+  <form  method="GET" action="../src/controllers/User/index_user.php" >
+    <button type="submit" class="btn btn-secondary  mb-4">Voir tous les utilisateurs</button>
+  </form>
+
+  <form  method="GET" action="../src/controllers/Dossiers/index_dossier.php" >
+    <button type="submit" class="btn btn-dark  mb-4">Voir tous les dossiers</button>
+  </form>
+
+
+</div>
+{% endblock %} 

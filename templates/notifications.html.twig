@@ -1,0 +1,24 @@
+{% extends 'index.html.twig' %}
+
+{% block content %}
+<div class="container">
+  <form  method="GET" action="/" >
+    <button type="submit" class="btn btn-secondary  mb-4">Retour au menu</button>
+  </form>
+  <h1>Notifications :</h1>
+
+  {% for notifs in notifications %}
+    <div class="card mb-3">
+      <div class="card-header">
+        <h2 class="card-title">Notification : {{ loop.index }}</h2>
+      </div>
+      <div class="card-body">
+        <h3 class="card-subtitle mb-2">Titre: {{ notifs.title }}</h3>
+        <h4 class="card-text">Message: {{ notifs.message }}</h4>
+        <p class="card-text">Date de création: {{ notifs.date_creation|date("m/d/Y") }}</p>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'index.html.twig' %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-success">Etablissement {{ id }} supprimé :</h1>
+  <p>{{ etablissement.id }}</p>
+  <form  method="GET" action="../Etablissement/index_etablissement.php" >
+    <button type="submit" class="btn btn-primary  mb-4">Voir tous les établissement</button>
+  </form>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\Etablissement" table="etablissement">
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+            <option name="default">0</option>
+        </id>
+        <field name="idprevarisc" type="integer" />
+        <field name="est_importe" type="boolean" />
+
+    </entity>
+</doctrine-mapping>
