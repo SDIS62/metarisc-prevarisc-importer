@@ -11,13 +11,10 @@ $twig = new Twig\Environment($loader, [
     'cache' => false,
 ]);
 
-$connexion = require '../../../config.php';
+$config = require __DIR__.'/../../../config/config.php';
+$container = \App\Container::initWithDefaults($config);
 
-$dbParams = $connexion['db'];
-$em_config = $connexion['em_config'];
-$connection = DriverManager::getConnection($dbParams, $em_config);
-
-$em = new EntityManager($connection, $em_config);
+$em = $container->get(EntityManager::class);
 
 $etablissements = $em->getRepository('App\Entity\Etablissement')->findAll();
 //Faire un tableau à rendre sur twig

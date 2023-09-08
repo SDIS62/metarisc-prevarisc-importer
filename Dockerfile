@@ -25,4 +25,6 @@ RUN composer dump-autoload --optimize
 
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+# Insert application
+COPY boot.sh boot.sh
+CMD ["bash", "/var/www/html/boot.sh"]

@@ -4,7 +4,7 @@
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
 
-$connexion = require '../../../config.php';
+$connexion = require __DIR__.'/../../../config/config.php';
 
 $loader = new Twig\Loader\FilesystemLoader(__DIR__.'/../../../templates');
 $twig = new Twig\Environment($loader, [
@@ -12,17 +12,17 @@ $twig = new Twig\Environment($loader, [
 ]);
 
 
-$dbParams = $connexion['db'];
-$em_config = $connexion['em_config'];
-$connection = DriverManager::getConnection($dbParams, $em_config);
+$config = require __DIR__.'/../../../config/config.php';
+$container = \App\Container::initWithDefaults($config);
 
-$em = new EntityManager($connection, $em_config);
+$em = $container->get(EntityManager::class);
+
 $eta = new \App\Entity\Etablissement(false, $_POST['id']);
 
 $em->persist($eta);
 $em->flush();
 
-$em = new EntityManager($connection, $em_config);
+$em = $container->get(EntityManager::class);
 
 $etablissements = $em->getRepository('App\Entity\Etablissement')->findAll();
 //Faire un tableau à rendre sur twig
