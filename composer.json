@@ -23,7 +23,11 @@
         "doctrine/dbal": "^3.2",
         "doctrine/orm": "^2.11.0",
         "doctrine/annotations": "2.0.x-dev",
-        "doctrine/migrations": "3.5.x-dev"
+        "doctrine/migrations": "3.5.x-dev",
+        "vlucas/phpdotenv": "^5.5@dev",
+        "laminas/laminas-servicemanager": "4.0.x-dev",
+        "laminas/laminas-di": "dev-renovate/psr-container-2.x",
+        "spatie/fractalistic": "dev-main"
     },
 
     "prefer-stable": false,

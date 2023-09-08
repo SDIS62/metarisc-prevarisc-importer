@@ -9,20 +9,13 @@ use Doctrine\Migrations\DependencyFactory;
 use Doctrine\Migrations\Configuration\Migration\PhpFile;
 use Doctrine\Migrations\Configuration\EntityManager\ExistingEntityManager;
 
-$connexion = require 'config.php';
+$config = require __DIR__.'/config/config.php';
+$container = Container::initWithDefaults($config);
+
+$config = new PhpFile(__DIR__ . '/config/migrations.php');
 
 
-$config = new PhpFile(__DIR__.'/configOrm/migrations.php');
-
-
-$dbParams = $connexion['db'];
-$em_config = $connexion['em_config'];
-$connection = DriverManager::getConnection($dbParams, $em_config);
-
-$entityManager = new EntityManager($connection, $em_config);
-
+$entityManager = $container->get(EntityManager::class);
 assert($entityManager instanceof EntityManager);
 
 return DependencyFactory::fromEntityManager($config, new ExistingEntityManager($entityManager));
-
-
